@@ -6,7 +6,12 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     running = True 
 
+    clock = pygame.time.Clock()
+    fps = 60
+    dt = 0
+
     while running: 
+        dt = (clock.tick(fps)) / 1000
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
