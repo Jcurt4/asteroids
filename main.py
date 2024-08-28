@@ -10,6 +10,9 @@ def main():
     clock = pygame.time.Clock()
     fps = 60
     dt = 0
+    updatabele = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatabele, drawable)
 
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
@@ -20,8 +23,10 @@ def main():
                 running = False
 
         screen.fill((0, 0, 0))
-        player.update(dt)
-        player.draw(screen)
+        for update in updatabele:
+            update.update(dt)   
+        for draw in drawable:
+            draw.draw(screen)
         pygame.display.flip()
 
 
